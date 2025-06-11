@@ -1,39 +1,54 @@
-<html lang="pt-BR">
-<head>
-    <link rel="stylesheet" href="styles.css">
-    <title>Aluraflix</title>
-</head>
 
-<body>
-    <header>ALURAFLIX</header>
+ let campoIdade;
+let campoFantasia;
+let campoAventura;
 
-    <section>
-        <div class="chamada-texto">
-            <h1>ATRAVÉS DO ARANHAVERSO SUPERA O PRIMEIRO FILME?</h1>
-            <p>#homem-aranha</p>
-        </div>
+function setup() {
+  createCanvas(800, 400);
+  createElement("h2", "Recomendador de filmes");
+  createSpan("Sua idade:");
+  campoIdade = createInput("5");
+  campoFantasia = createCheckbox("Gosta de fantasia?");
+  campoAventura = createCheckbox("Gosta de aventura?");
+}
 
-        <div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/gt_fAE1Eg2Q?si=EEv-tsY_b1B2OwKE"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-    </section>
+function draw() {
+  background("white");
+  let idade = campoIdade.value();
+  let gostaDeFantasia = campoFantasia.checked();
+  let gostaDeAventura = campoAventura.checked();
+  let recomendacao = geraRecomendacao(idade, gostaDeFantasia, gostaDeAventura);
 
-</body>
+  fill(color(76, 0, 115));
+  textAlign(CENTER, CENTER);
+  textSize(38);
+  text(recomendacao, width / 2, height / 2);
+}
 
-</html>
-
-</section>
-<section classe"categoria" )
-<h2>Filmes e Series</h2>
-<div> classe "categoria "videos")
-    <a hrgf="https://www.youtube.com/watch?v=OoKSKzqpPy4"
-    <img.src="https://img.youtube.com/vi/"OoKSKzqpPy4/maxresdefault.jpg"/
-</a>
-<a hrgf="https://www.youtube.com/watch?v=6HsfXtgcAE4"
-<img.src="https://img.youtube.com/vi/"rx5szGWTzTc/maxresdefault.jpg"/
-</a>
- <hrgf="https://www.youtube.com/watch?v=6HsfXtgcAE4"
- <img.src="https://img.youtube.com/vi/"6HsfXtgcAE4
+function geraRecomendacao(idade, gostaDeFantasia, gostaDeAventura) {
+  if (idade >= 10) {
+    if (idade >= 14) {
+      return "O menino que descobriu o vento";
+    } else {
+      if (idade >= 12) {
+        if(gostaDeFantasia || gostaDeAventura) {
+          return "Homem aranha: no aranhaverso";          
+        } else{
+         return "Ladrões de bicicleta";
+        }
+      } else {
+        if (gostaDeFantasia) {
+          return "As aventuras de pi";
+        } else {
+          return "Depois da chuva";
+        }
+      }
+    }
+  } else {
+    if (gostaDeFantasia) {
+      return "A viagem de chihiro";
+    } else {
+      return "O feitiço do tempo";
+    }
+  }
+}
